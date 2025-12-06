@@ -16,10 +16,7 @@ variable "asp_sku" {
 }
 
 # Web App / Container
-variable "frontend_image" {
-  type        = string
-  description = "ACR image for frontend"
-}
+
 
 variable "container_port" {
   type        = number
