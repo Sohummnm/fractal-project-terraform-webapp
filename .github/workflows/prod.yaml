@@ -58,6 +58,7 @@ jobs:
                 ARM_USE_OIDC: true
 
             - name: Terraform Apply
+              working-directory: environments/prod
               run: terraform apply -var-file=prod.tfvars 
                 -var "mysql_host=${{ secrets.DB_HOST }}" 
                 -var "mysql_username=${{ secrets.DB_USERNAME }}" 
