@@ -53,6 +53,7 @@ jobs:
                 -var "mysql_username=${{ secrets.DB_USERNAME }}" 
                 -var "mysql_password=${{ secrets.DB_PASSWORD }}" 
                 -var "mysql_database_name=${{ secrets.DB_DATABASE }}"
+                -var "docker_registry_password=${{ secrets.DOCKER_REGISTRY_PASSWORD }}"
               working-directory: environments/prod
               env:
                 ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -67,6 +68,7 @@ jobs:
                 -var "mysql_username=${{ secrets.DB_USERNAME }}" 
                 -var "mysql_password=${{ secrets.DB_PASSWORD }}" 
                 -var "mysql_database_name=${{ secrets.DB_DATABASE }}"
+                -var "docker_registry_password=${{ secrets.DOCKER_REGISTRY_PASSWORD }}"
               env:
                 ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
                 ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}

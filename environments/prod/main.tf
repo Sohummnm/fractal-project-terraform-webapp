@@ -52,7 +52,7 @@ module "webapp_slots" {
 
 
   acr_login_server    = var.acr_login_server
-  image_name          = var.slot_docker_image
+  image_name          = var.docker_image_slot
   container_port      = var.container_port
 
   mysql_host            = var.mysql_host
