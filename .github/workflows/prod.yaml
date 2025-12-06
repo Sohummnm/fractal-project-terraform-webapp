@@ -3,6 +3,11 @@
 name: App service
 on:
   workflow_dispatch:
+    inputs:
+      tf_action:
+        description: "Terraform action to perform (Init, Plan, Apply)"
+        required: true
+        default: 'plan'
 jobs:
     terraform:
         name: Terraform Apply
@@ -27,6 +32,7 @@ jobs:
                 terraform_version: '1.9.0'
 
             - name: Terraform init
+              if: inputs.tf_action == 'init'
               run: terraform init
               working-directory: environments/prod
               env:
@@ -45,6 +51,7 @@ jobs:
                 ARM_USE_OIDC: true
 
             - name: Terraform plan
+              if: inputs.tf_action == 'plan' || inputs.tf_action == 'apply'
               run: terraform plan -var-file=prod.tfvars 
                 -var "mysql_host=${{ secrets.DB_HOST }}" 
                 -var "mysql_username=${{ secrets.DB_USER }}" 
@@ -59,6 +66,22 @@ jobs:
                 ARM_USE_OIDC: true
 
             - name: Terraform Apply
+              if: inputs.tf_action == 'apply' && github.ref == 'refs/heads/main'
+              working-directory: environments/prod
+              run: terraform apply -auto-approve -var-file=prod.tfvars 
+                -var "mysql_host=${{ secrets.DB_HOST }}" 
+                -var "mysql_username=${{ secrets.DB_USER }}" 
+                -var "mysql_password=${{ secrets.DB_PASSWORD }}" 
+                -var "mysql_database_name=${{ secrets.DB_NAME }}"
+                -var "docker_registry_password=${{ secrets.DOCKER_REGISTRY_PASSWORD }}"
+              env:
+                ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+                ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+                ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+                ARM_USE_OIDC: true
+
+            - name: Terraform Destroy
+              if: inputs.tf_action == 'destroy' 
               working-directory: environments/prod
               run: terraform apply -auto-approve -var-file=prod.tfvars 
                 -var "mysql_host=${{ secrets.DB_HOST }}" 
