@@ -17,7 +17,7 @@ output "app_service_plan_id" {
 
 # Web App
 output "appservice_name" {
-  value       = module.appservice
+  value       = module.appservice.default_hostname
   description = "App Service name"
 }
 
@@ -30,5 +30,8 @@ output "webapp_default_hostname" {
 output "slot_names" {
   value       = module.webapp_slots.slot_names
   description = "Deployment slots names"
+}
+output "slot_hostname" {
+  value = module.webapp_slots.slot_hostnames
 }
 
