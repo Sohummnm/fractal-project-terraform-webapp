@@ -33,7 +33,7 @@ module "webapp" {
   resource_group_name   = module.rg.name
   app_service_plan_id   = module.app_service_plan.id
   docker_registry_username = var.docker_registry_username
-  docker_image          = "myacr.azurecr.io/myfrontend"
+  docker_image          = var.image_name
   container_port        = 80
 
   # MySQL connection
