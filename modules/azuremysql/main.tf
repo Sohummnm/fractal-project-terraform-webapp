@@ -1,47 +1,59 @@
-resource "random_password" "mysql_password" {
-  length  = 16
-  special = true
-}
-
-resource "azurerm_mysql_server" "this" {
-  name                = var.server_name
-  location            = var.location
-  resource_group_name = var.resource_group_name
+resource "azurerm_mysql_flexible_server" "this" {
+  name                   = var.mysql_name
+  location               = var.location
+  resource_group_name    = var.resource_group_name
 
   administrator_login          = var.admin_username
-  administrator_login_password = var.admin_password != "" ? var.admin_password : random_password.mysql_password.result
+  administrator_password        = var.admin_password
 
-  version = var.mysql_version
-
-  sku {
-    name     = var.sku_name      # e.g. B_Gen5_1
-    tier     = var.tier          # e.g. Basic
-    family   = var.family        # e.g. Gen5
-    capacity = var.capacity      # e.g. 1
+  sku_name   = "Standard_D2ds_v4"
+  version    = "8.0"
+  storage {
+    size_gb = "16384"
   }
 
-  storage_profile {
-    storage_mb            = var.storage_mb
-    backup_retention_days = var.backup_retention_days
-    geo_redundant_backup  = var.geo_redundant_backup
+  backup_retention_days = 7
+
+  high_availability {
+    mode = "Disabled"
   }
 
-  ssl_enforcement = var.ssl_enforcement
+  maintenance_window {
+    day_of_week  = 0
+    start_hour   = 0
+    start_minute = 0
+  }
+
+  tags = var.tags
 }
 
-resource "azurerm_mysql_database" "db" {
-  name                = var.database_name
-  resource_group_name = azurerm_mysql_server.this.resource_group_name
-  server_name         = azurerm_mysql_server.this.name
-  charset             = var.charset
-  collation           = var.collation
+# -------------------------
+# Create the database
+# -------------------------
+resource "azurerm_mysql_flexible_database" "db" {
+  name                = var.db_name
+  resource_group_name = var.resource_group_name
+  server_name         = azurerm_mysql_flexible_server.this.name
+  charset             = "utf8"
+  collation           = "utf8_unicode_ci"
 }
 
-resource "azurerm_mysql_firewall_rule" "allow_access" {
-  count               = var.enable_firewall_rule ? 1 : 0
-  name                = "allow-access"
-  resource_group_name = azurerm_mysql_server.this.resource_group_name
-  server_name         = azurerm_mysql_server.this.name
+# -------------------------
+# Allow external access
+# -------------------------
+resource "azurerm_mysql_flexible_server_firewall_rule" "allow_my_ip" {
+  name                = "allow-my-ip"
   start_ip_address    = var.start_ip
   end_ip_address      = var.end_ip
+  resource_group_name = var.resource_group_name
+  server_name = azurerm_mysql_flexible_server.this.name
+  
+}
+
+output "mysql_fqdn" {
+  value = azurerm_mysql_flexible_server.this.fqdn
+}
+
+output "database_name" {
+  value = azurerm_mysql_flexible_database.db.name
 }

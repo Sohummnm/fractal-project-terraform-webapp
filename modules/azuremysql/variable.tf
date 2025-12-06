@@ -1,103 +1,46 @@
-variable "server_name" {
+variable "mysql_name" {
   type        = string
-  description = "Name of the MySQL server"
+  description = "Name of the MySQL flexible server."
 }
 
 variable "location" {
   type        = string
-  description = "Azure region"
+  description = "Azure region where the server will be created."
 }
 
 variable "resource_group_name" {
   type        = string
-  description = "Resource group name"
+  description = "Resource group where the server is deployed."
 }
 
 variable "admin_username" {
   type        = string
-  default     = "mysqladmin"
+  description = "Admin username for MySQL."
 }
 
 variable "admin_password" {
   type        = string
-  default     = ""
+  description = "Admin password for MySQL."
   sensitive   = true
 }
 
-variable "mysql_version" {
-  type    = string
-  default = "5.7"
-}
-
-# SKU + Performance
-variable "sku_name" {
-  type    = string
-  default = "B_Gen5_1"
-}
-
-variable "tier" {
-  type    = string
-  default = "Basic"
-}
-
-variable "family" {
-  type    = string
-  default = "Gen5"
-}
-
-variable "capacity" {
-  type    = number
-  default = 1
-}
-
-# Storage
-variable "storage_mb" {
-  type    = number
-  default = 5120
-}
-
-variable "backup_retention_days" {
-  type    = number
-  default = 7
-}
-
-variable "geo_redundant_backup" {
-  type    = string
-  default = "Disabled"
-}
-
-variable "ssl_enforcement" {
-  type    = string
-  default = "Enabled"
-}
-
-# Database
-variable "database_name" {
-  type = string
-}
-
-variable "charset" {
-  type    = string
-  default = "utf8"
-}
-
-variable "collation" {
-  type    = string
-  default = "utf8_general_ci"
-}
-
-# Firewall rule
-variable "enable_firewall_rule" {
-  type    = bool
-  default = false
+variable "db_name" {
+  type        = string
+  description = "Database name to create."
 }
 
 variable "start_ip" {
-  type    = string
-  default = "0.0.0.0"
+  type        = string
+  description = "Start IP for firewall rule."
 }
 
 variable "end_ip" {
-  type    = string
-  default = "255.255.255.255"
+  type        = string
+  description = "End IP for firewall rule."
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags to be applied."
+  default     = {}
 }
