@@ -1,9 +1,9 @@
 Terraform project which deploys app service in azure with 2 deployment slots[testing, staging].
 
 Pre-requisite
-0. Create App registration + Federated Credentials for OIDC connection[passwordless authentication] && assign Contributor/(least privileage) role to this identity at Subscription Layer.
-1. Bootstraping of Terraform: Create 1 Azure storage account and a container in it and pass this information in backend.tf [for terraform init]
-2. AzureMYSQL database flexible servers.
+1. Create App registration + Federated Credentials for OIDC connection[passwordless authentication] && assign Contributor/(least privileage) role to this identity at Subscription Layer.
+2. Bootstraping of Terraform: Create 1 Azure storage account and a container in it and pass this information in backend.tf [for terraform init]
+3. AzureMYSQL database flexible servers.
    
 
 Security:
@@ -12,7 +12,7 @@ Security:
 3. Stores tfstate file remotely in Azure Blob Containers with lease locks.
 
 Features:
-0. One click provisioning and destroy feature. 
-1. Modular terraform structure to facilitate easy and quick provisioning of azure app service resources.
-2. Github action workflow with workflow_dispatch.input feature to ease init, plan, apply and destroy terraform.
-3. tfvars file to control all variables from one place.
+1. One click provisioning and destroy feature. 
+2. Modular terraform structure to facilitate easy and quick provisioning of azure app service resources.
+3. Github action workflow with workflow_dispatch.input feature to ease init, plan, apply and destroy terraform.
+4. tfvars file to control all variables from one place.
