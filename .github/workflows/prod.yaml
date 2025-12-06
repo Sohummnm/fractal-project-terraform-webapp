@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       tf_action:
-        description: "Terraform action to perform (Init, Plan, Apply)"
+        description: "Terraform action to perform (init, plan, apply)"
         required: true
         default: 'plan'
 jobs:
