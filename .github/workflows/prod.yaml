@@ -37,10 +37,6 @@ jobs:
 
             - name: Terraform validate
               run: terraform validate
-                - var "mysql_host=${{ secrets.DB_HOST }}"
-                - var "mysql_username=${{ secrets.DB_PASSWORD }}"
-                - var "mysql_password=${{ secrets.DB_PASSWORD }}"
-                - var "mysql_database_name=${{ secrets.DB_DATABASE }}"
               working-directory: environments/prod
               env:
                 ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
