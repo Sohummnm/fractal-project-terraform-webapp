@@ -1,5 +1,5 @@
 # Resource Group
-rg_name   = "pe1-rg-dev"
+rg_name   = "terraform-project-rg"
 rg_location  = "canadacentral"
 
 # App Service Plan
