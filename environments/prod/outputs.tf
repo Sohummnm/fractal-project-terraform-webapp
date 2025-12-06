@@ -32,24 +32,3 @@ output "slot_names" {
   description = "Deployment slots names"
 }
 
-# MySQL
-output "mysql_host" {
-  value       = module.mysql.host
-  description = "MySQL server host"
-}
-
-output "mysql_username" {
-  value       = module.mysql.username
-  description = "MySQL admin username"
-}
-
-output "mysql_password" {
-  value       = module.mysql.password
-  description = "MySQL admin password"
-  sensitive   = true
-}
-
-output "mysql_database_name" {
-  value       = module.mysql.database_name
-  description = "MySQL database name"
-}
