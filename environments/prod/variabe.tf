@@ -4,7 +4,7 @@ variable "rg_name" {
   description = "Name of the resource group"
 }
 
-variable "location" {
+variable "rg_location" {
   type        = string
   description = "Azure region to deploy resources"
 }
