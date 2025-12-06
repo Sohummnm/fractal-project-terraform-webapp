@@ -6,13 +6,13 @@ location  = "CentralCanada"
 asp_sku   = "S1"
 
 # Web App / Container
-frontend_image = "frontend:v2"
+image_image_name = "frontend:v2"
 container_port = 80
 
 # Deployment Slots
 slot_names       = ["staging", "testing"]
 #acr_login_server = "myacr.azurecr.io"
-image_name       = "frontend:v3"
+slot_docker_image       = "frontend:v3"
 docker_registry_username = "sohummnm"
 
 # MySQL
