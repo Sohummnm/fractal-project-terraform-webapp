@@ -45,10 +45,10 @@ jobs:
                 ARM_USE_OIDC: true
 
             - name: Terraform plan
-              run: terraform plan -var-file=prod.tfvars \
-                -var "mysql_host=${{ secrets.DB_HOST }}" \
-                -var "mysql_username=${{ secrets.DB_USERNAME }}" \
-                -var "mysql_password=${{ secrets.DB_PASSWORD }}" \
+              run: terraform plan -var-file=prod.tfvars 
+                -var "mysql_host=${{ secrets.DB_HOST }}" 
+                -var "mysql_username=${{ secrets.DB_USERNAME }}" 
+                -var "mysql_password=${{ secrets.DB_PASSWORD }}" 
                 -var "mysql_database_name=${{ secrets.DB_DATABASE }}"
               working-directory: environments/prod
               env:
