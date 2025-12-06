@@ -45,8 +45,8 @@ module "webapp_slots" {
   resource_group_name = module.rg.name
   docker_image = var.slot_docker_image
 
-  acr_login_server    = "fractaltrainingterraform-g9csa7hef9gkhwau.azurecr.io"
-  image_name          = "myfrontend"
+  acr_login_server    = var.acr_login_server
+  image_name          = var.slot_docker_image
   container_port      = 80
 
   mysql_host            = var.mysql_host

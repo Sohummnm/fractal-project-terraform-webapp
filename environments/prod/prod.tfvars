@@ -19,3 +19,5 @@ mysql_server_name    = "pe1-mysql-dev"
 mysql_admin_username = "mysqladmin"
 mysql_admin_password = ""    # Leave empty → random password will be generated
 mysql_database_name  = "pe1db"
+
+acr_login_server = "fractaltrainingterraform-g9csa7hef9gkhwau.azurecr.io"
