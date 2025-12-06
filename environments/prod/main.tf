@@ -2,7 +2,7 @@
 module "rg" {
   source   = "../../modules/resourcegroup"
   name     = "pe1-rg-dev"
-  location = "East US"
+  location = "Central Canada"
 }
 
 module "app_service_plan" {
@@ -10,7 +10,7 @@ module "app_service_plan" {
   name                = "pe1-asp-dev"
   location            = module.rg.location
   resource_group_name = module.rg.name
-  sku_name            = "B1"  # adjust as needed
+  sku_name            = "S1"  # adjust as needed
 }
 
 
@@ -49,10 +49,10 @@ module "webapp_slots" {
   image_name          = "myfrontend"
   container_port      = 80
 
-  mysql_host          = module.mysql.host
-  mysql_username      = module.mysql.username
-  mysql_password      = module.mysql.password
-  mysql_database      = module.mysql.database_name
+  mysql_host            = var.mysql_host
+  mysql_username        = var.mysql_username
+  mysql_password        = var.mysql_password
+  mysql_database        = var.mysql_database_name
 
   additional_app_settings = {
     "ENV" = "prod"
