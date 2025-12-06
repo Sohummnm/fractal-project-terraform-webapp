@@ -37,6 +37,10 @@ jobs:
 
             - name: Terraform validate
               run: terraform validate
+                - var "mysql_host=${{ secrets.DB_HOST }}"
+                - var "mysql_username=${{ secrets.DB_PASSWORD }}"
+                - var "mysql_password=${{ secrets.DB_PASSWORD }}"
+                - var "mysql_database_name=${{ secrets.DB_DATABASE }}"
               working-directory: environments/prod
               env:
                 ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -46,6 +50,10 @@ jobs:
 
             - name: Terraform plan
               run: terraform plan -var-file=/environments/prod/prod.tfvars
+                - var "mysql_host=${{ secrets.DB_HOST }}"
+                - var "mysql_username=${{ secrets.DB_PASSWORD }}"
+                - var "mysql_password=${{ secrets.DB_PASSWORD }}"
+                - var "mysql_database_name=${{ secrets.DB_DATABASE }}"
               working-directory: environments/prod
               env:
                 ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -55,6 +63,10 @@ jobs:
 
             - name: Terraform Apply
               run: teraform apply -var-file=/environments/prod/prod.tfvars
+                - var "mysql_host=${{ secrets.DB_HOST }}"
+                - var "mysql_username=${{ secrets.DB_PASSWORD }}"
+                - var "mysql_password=${{ secrets.DB_PASSWORD }}"
+                - var "mysql_database_name=${{ secrets.DB_DATABASE }}"
               env:
                 ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
                 ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}

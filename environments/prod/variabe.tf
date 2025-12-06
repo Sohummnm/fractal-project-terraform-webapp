@@ -42,31 +42,22 @@ variable "image_name" {
   description = "Container image name for slots"
 }
 
-# MySQL
-variable "mysql_server_name" {
-  type        = string
-  description = "Name of the MySQL flexible server"
-}
-
-variable "mysql_admin_username" {
-  type        = string
-  description = "Admin username for MySQL"
-}
-
-variable "mysql_admin_password" {
-  type        = string
-  description = "Admin password for MySQL (leave empty to auto-generate)"
-  sensitive   = true
-}
-
-variable "mysql_database_name" {
-  type        = string
-  description = "Name of the MySQL database"
-}
 variable "docker_registry_username" {
   type = string
   description = "Enter registry username"
 }
 variable "slot_docker_image" {
   description = "Enter slots docker image name"
+}
+variable "mysql_host" {
+  description = "Enter sql host"
+}
+variable "mysql_username" {
+  description = "Enter sql username"
+}
+variable "mysql_database_name" {
+  description = "value"
+}
+variable "mysql_password" {
+  description = "Enter password"
 }

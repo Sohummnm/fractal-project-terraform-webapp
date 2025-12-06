@@ -13,18 +13,6 @@ module "app_service_plan" {
   sku_name            = "B1"  # adjust as needed
 }
 
-module "mysql" {
-  source               = "../../modules/azuremysql"
-  server_name          = "pe1-mysql-dev"
-  resource_group_name  = module.rg.name
-  location             = module.rg.location
-  sku_name             = "B_Gen5_1"
-  admin_username       = "mysqladmin"
-  admin_password       = ""  # will be auto-generated
-  database_name        = "pe1db"
-
-}
-
 
 module "appservice" {
   source                = "../../modules/appservice"
@@ -37,10 +25,10 @@ module "appservice" {
   container_port        = 80
 
   # MySQL connection
-  mysql_host            = module.mysql.host
-  mysql_username        = module.mysql.username
-  mysql_password        = module.mysql.password
-  mysql_database        = module.mysql.database_name
+  mysql_host            = var.mysql_host
+  mysql_username        = var.mysql_username
+  mysql_password        = var.mysql_password
+  mysql_database        = var.mysql_database_name
 
   additional_app_settings = {
     "ENV" = "dev"
