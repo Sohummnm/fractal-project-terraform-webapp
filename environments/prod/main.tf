@@ -20,7 +20,7 @@ module "appservice" {
   location              = module.rg.location
   resource_group_name   = module.rg.name
   app_service_plan_id   = module.app_service_plan.id
-  docker_image          = var.image_name
+  docker_image          = var.docker_image
   docker_image_tag = var.docker_image_tag
   container_port        = var.container_port
   docker_registry_username = var.docker_registry_username

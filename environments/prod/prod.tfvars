@@ -6,9 +6,9 @@ rg_location  = "canadacentral"
 asp_sku   = "S1"
 
 # Web App / Container
-docker_image        = "sohummnm/frontend"
-docker_imagedocker_image_tag = "v3"      
-container_port          = 80
+docker_image = "sohummnm/frontend"
+docker_image_tag = "v3"      
+container_port = 80
 
 # Deployment Slots
 slot_names = ["staging", "testing"]

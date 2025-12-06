@@ -34,7 +34,7 @@ variable "acr_login_server" {
   description = "ACR login server URL"
 }
 
-variable "image_name" {
+variable "docker_image" {
   type        = string
   description = "Container image name for slots"
 }
