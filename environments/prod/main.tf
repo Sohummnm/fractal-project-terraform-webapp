@@ -38,7 +38,6 @@ module "appservice" {
 module "webapp_slots" {
   source              = "../../modules/deploymentslots"
   app_service_id      = module.appservice.id
-  app_service_plan_id = module.app_service_plan.id
   app_service_name = module.appservice.default_hostname
   slot_names          = var.slot_names
   location = module.rg.location
