@@ -1,0 +1,55 @@
+# Resource Group
+output "resource_group_name" {
+  value       = module.rg.name
+  description = "Resource Group name"
+}
+
+output "resource_group_location" {
+  value       = module.rg.location
+  description = "Resource Group location"
+}
+
+# App Service Plan
+output "app_service_plan_id" {
+  value       = module.app_service_plan.id
+  description = "App Service Plan ID"
+}
+
+# Web App
+output "webapp_name" {
+  value       = module.webapp.name
+  description = "Web App name"
+}
+
+output "webapp_default_hostname" {
+  value       = module.webapp.default_hostname
+  description = "Web App default hostname"
+}
+
+# Deployment Slots
+output "slot_names" {
+  value       = module.webapp_slots.slot_names
+  description = "Deployment slots names"
+}
+
+# MySQL
+output "mysql_host" {
+  value       = module.mysql.host
+  description = "MySQL server host"
+}
+
+output "mysql_username" {
+  value       = module.mysql.username
+  description = "MySQL admin username"
+}
+
+output "mysql_password" {
+  value       = module.mysql.password
+  description = "MySQL admin password"
+  sensitive   = true
+}
+
+output "mysql_database_name" {
+  value       = module.mysql.database_name
+  description = "MySQL database name"
+}
