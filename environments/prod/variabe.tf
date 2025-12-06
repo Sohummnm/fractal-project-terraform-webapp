@@ -63,3 +63,7 @@ variable "mysql_database_name" {
   type        = string
   description = "Name of the MySQL database"
 }
+variable "docker_registry_username" {
+  type = string
+  description = "Enter registry username"
+}

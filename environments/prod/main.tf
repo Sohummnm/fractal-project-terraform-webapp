@@ -1,28 +1,20 @@
-# --------------------------
-# RESOURCE GROUP
-# --------------------------
+
 module "rg" {
-  source   = "../../modules/resource-group"
+  source   = "../../modules/resourcegroup"
   name     = "pe1-rg-dev"
   location = "East US"
 }
 
-# --------------------------
-# APP SERVICE PLAN
-# --------------------------
 module "app_service_plan" {
-  source              = "../../modules/app-service-plan"
+  source              = "../../modules/appserviceplan"
   name                = "pe1-asp-dev"
   location            = module.rg.location
   resource_group_name = module.rg.name
   sku_name            = "B1"  # adjust as needed
 }
 
-# --------------------------
-# MYSQL DATABASE
-# --------------------------
 module "mysql" {
-  source               = "../../modules/mysql"
+  source               = "../../modules/azuremysql"
   server_name          = "pe1-mysql-dev"
   resource_group_name  = module.rg.name
   location             = module.rg.location
@@ -33,16 +25,14 @@ module "mysql" {
   public_access_enabled = false
 }
 
-# --------------------------
-# APP SERVICE (Main)
-# --------------------------
+
 module "webapp" {
-  source                = "../../modules/app-service"
+  source                = "../../modules/appservice"
   name                  = "pe1-webapp-dev"
   location              = module.rg.location
   resource_group_name   = module.rg.name
   app_service_plan_id   = module.app_service_plan.id
-
+  docker_registry_username = var.docker_registry_username
   docker_image          = "myacr.azurecr.io/myfrontend"
   container_port        = 80
 
@@ -57,11 +47,8 @@ module "webapp" {
   }
 }
 
-# --------------------------
-# DEPLOYMENT SLOTS
-# --------------------------
 module "webapp_slots" {
-  source              = "../../modules/deployment-slot"
+  source              = "../../modules/deploymentslot"
   app_service_id      = module.webapp.id
   app_service_plan_id = module.app_service_plan.id
   slot_names          = ["staging", "testing"]
