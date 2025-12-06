@@ -2,7 +2,6 @@ resource "azurerm_linux_web_app_slot" "this" {
   for_each          = toset(var.slot_names)
   app_service_id     = var.app_service_id
   name               = each.value
-  service_plan_id    = var.app_service_plan_id
   https_only         = true
 
   site_config {

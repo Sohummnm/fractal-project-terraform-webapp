@@ -13,11 +13,6 @@ variable "resource_group_name" {
   description = "Resource group name"
 }
 
-variable "app_service_plan_id" {
-  type        = string
-  description = "App Service Plan ID"
-}
-
 variable "app_service_name" {
   type        = string
   description = "Name of the parent App Service"
