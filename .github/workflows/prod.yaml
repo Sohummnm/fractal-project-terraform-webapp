@@ -32,7 +32,6 @@ jobs:
                 terraform_version: '1.9.0'
 
             - name: Terraform init
-              if: inputs.tf_action == 'init'
               run: terraform init
               working-directory: environments/prod
               env:
