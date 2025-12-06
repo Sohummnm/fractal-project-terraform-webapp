@@ -16,13 +16,13 @@ output "app_service_plan_id" {
 }
 
 # Web App
-output "webapp_name" {
-  value       = module.webapp.name
-  description = "Web App name"
+output "appservice_name" {
+  value       = module.appservice
+  description = "App Service name"
 }
 
 output "webapp_default_hostname" {
-  value       = module.webapp.default_hostname
+  value       = module.appservice.default_hostname
   description = "Web App default hostname"
 }
 

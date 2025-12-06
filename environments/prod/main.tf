@@ -22,7 +22,7 @@ module "mysql" {
   admin_username       = "mysqladmin"
   admin_password       = ""  # will be auto-generated
   database_name        = "pe1db"
-  public_access_enabled = false
+
 }
 
 

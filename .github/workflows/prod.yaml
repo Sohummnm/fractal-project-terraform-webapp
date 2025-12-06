@@ -38,10 +38,25 @@ jobs:
             - name: Terraform validate
               run: terraform validate
               working-directory: environments/prod
+              env:
+                ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+                ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+                ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+                ARM_USE_OIDC: true
 
             - name: Terraform plan
               run: terraform plan -var-file=/environments/prod/prod.tfvars
               working-directory: environments/prod
+              env:
+                ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+                ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+                ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+                ARM_USE_OIDC: true
 
             - name: Terraform Apply
               run: teraform apply -var-file=/environments/prod/prod.tfvars
+              env:
+                ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+                ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+                ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+                ARM_USE_OIDC: true

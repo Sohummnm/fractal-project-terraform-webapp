@@ -1,16 +1,20 @@
-output "host" {
-  value = azurerm_mysql_flexible_server.this.fqdn
+output "mysql_server_name" {
+  value = azurerm_mysql_server.this.name
 }
 
-output "username" {
-  value = azurerm_mysql_flexible_server.this.administrator_login
+output "mysql_fqdn" {
+  value = azurerm_mysql_server.this.fqdn
 }
 
-output "password" {
-  value = azurerm_mysql_flexible_server.this.administrator_login_password
+output "mysql_admin_username" {
+  value = azurerm_mysql_server.this.administrator_login
+}
+
+output "mysql_password" {
+  value     = azurerm_mysql_server.this.administrator_login_password
   sensitive = true
 }
 
 output "database_name" {
-  value = azurerm_mysql_flexible_server_database.db.name
+  value = azurerm_mysql_database.db.name
 }
