@@ -4,3 +4,6 @@ output "slot_hostnames" {
     k => v.default_hostname
   }
 }
+output "slot_names" {
+  value = var.slot_names
+}
