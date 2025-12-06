@@ -18,12 +18,12 @@ variable "app_service_name" {
   description = "Name of the parent App Service"
 }
 
-variable "docker_image" {
+variable "docker_image_slot" {
   type        = string
   description = "Container image name"
 }
 
-variable "docker_image_tag" {
+variable "docker_image_tag_slot" {
   type        = string
   description = "Container image tag"
   default     = "latest"
@@ -70,4 +70,10 @@ variable "image_name" {
 }
 variable "acr_login_server" {
   description = "Enter ACR login server"
+}
+variable "docker_registry_username" {
+    description = "Enter Docker registry username"
+}
+variable "docker_registry_password" {
+  description = "Enter Docker registry password"
 }

@@ -58,3 +58,15 @@ variable "mysql_database_name" {
 variable "mysql_password" {
   description = "Enter password"
 }
+variable "docker_image_tag" {
+  description = "Enter Docker Image tag"
+}
+variable "docker_registry_password" {
+  description = "Enter Docker registry password"
+}
+variable "docker_image_slot" {
+  description = "Enter Docker image slot"
+}
+variable "docker_image_tag_slot" {
+  description = "Enter Docker image tag slot"
+}

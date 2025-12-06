@@ -5,10 +5,11 @@ resource "azurerm_linux_web_app_slot" "this" {
   https_only         = true
 
   site_config {
-    always_on = true
-
     application_stack {
-      docker_image_name = var.docker_image
+      docker_image_name = "${var.docker_image_slot}:${var.docker_image_tag_slot}"
+      docker_registry_url      = "https://index.docker.io"   # optional for Docker Hub
+      docker_registry_username = var.docker_registry_username      # only if private
+      docker_registry_password = var.docker_registry_password     # only if private
     }
   }
 

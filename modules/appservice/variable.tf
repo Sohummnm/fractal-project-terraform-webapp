@@ -66,3 +66,6 @@ variable "additional_app_settings" {
 variable "docker_registry_username" {
     description = "Enter Docker registry username"
 }
+variable "docker_registry_password" {
+  description = "Enter Docker registry password"
+}
