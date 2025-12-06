@@ -1,6 +1,6 @@
 # Resource Group
 rg_name   = "pe1-rg-dev"
-rg_location  = "CentralCanada"
+rg_location  = "canadacentral"
 
 # App Service Plan
 asp_sku   = "S1"
