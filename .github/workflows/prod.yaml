@@ -83,7 +83,7 @@ jobs:
             - name: Terraform Destroy
               if: inputs.tf_action == 'destroy' 
               working-directory: environments/prod
-              run: terraform apply -auto-approve -var-file=prod.tfvars 
+              run: terraform destroy -auto-approve -var-file=prod.tfvars 
                 -var "mysql_host=${{ secrets.DB_HOST }}" 
                 -var "mysql_username=${{ secrets.DB_USER }}" 
                 -var "mysql_password=${{ secrets.DB_PASSWORD }}" 
