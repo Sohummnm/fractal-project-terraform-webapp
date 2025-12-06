@@ -26,7 +26,7 @@ module "mysql" {
 }
 
 
-module "webapp" {
+module "appservice" {
   source                = "../../modules/appservice"
   name                  = "pe1-webapp-dev"
   location              = module.rg.location
@@ -48,12 +48,16 @@ module "webapp" {
 }
 
 module "webapp_slots" {
-  source              = "../../modules/deploymentslot"
-  app_service_id      = module.webapp.id
+  source              = "../../modules/deploymentslots"
+  app_service_id      = module.appservice
   app_service_plan_id = module.app_service_plan.id
+  app_service_name = module.appservice.default_hostname
   slot_names          = ["staging", "testing"]
+  location = module.rg.location
+  resource_group_name = module.rg.name
+  docker_image = var.slot_docker_image
 
-  acr_login_server    = "myacr.azurecr.io"
+  acr_login_server    = "fractaltrainingterraform-g9csa7hef9gkhwau.azurecr.io"
   image_name          = "myfrontend"
   container_port      = 80
 
@@ -63,6 +67,6 @@ module "webapp_slots" {
   mysql_database      = module.mysql.database_name
 
   additional_app_settings = {
-    "ENV" = "dev"
+    "ENV" = "prod"
   }
 }

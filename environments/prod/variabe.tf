@@ -67,3 +67,6 @@ variable "docker_registry_username" {
   type = string
   description = "Enter registry username"
 }
+variable "slot_docker_image" {
+  description = "Enter slots docker image name"
+}
