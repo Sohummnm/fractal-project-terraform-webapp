@@ -1,5 +1,5 @@
 # Resource Group
-rg_name   = "terraform-project-rg"
+rg_name   = "fractal-terraform-project-rg"
 rg_location  = "canadacentral"
 
 # App Service Plan
