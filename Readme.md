@@ -10,6 +10,7 @@ Security:
 1. uses OIDC to authenticate with azure.
 2. uses App Service Environment variables to inject DB credentials into the application.
 3. Stores tfstate file remotely in Azure Blob Containers with lease locks.
+4. uses SSL encryption for data security in transmission.
 
 Features:
 1. One click provisioning and destroy feature. 
