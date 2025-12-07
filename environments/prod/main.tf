@@ -31,7 +31,7 @@ module "appservice" {
   mysql_host            = var.mysql_host
   mysql_username        = var.mysql_username
   mysql_password        = var.mysql_password
-  mysql_database        = var.mysql_database_name
+  mysql_database_name        = var.mysql_database_name
 
   additional_app_settings = {
     "ENV" = "prod"
