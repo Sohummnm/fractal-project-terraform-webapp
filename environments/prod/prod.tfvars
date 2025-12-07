@@ -7,7 +7,7 @@ asp_sku   = "S1"
 
 # Web App / Container
 docker_image = "sohummnm/frontend"
-docker_image_tag = "v3"      
+docker_image_tag = "v1"      
 container_port = 80
 
 # Deployment Slots
