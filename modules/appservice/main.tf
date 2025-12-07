@@ -23,7 +23,7 @@ resource "azurerm_linux_web_app" "this" {
       "MYSQL_HOST"                 = var.mysql_host
       "MYSQL_USERNAME"             = var.mysql_username
       "MYSQL_PASSWORD"             = var.mysql_password
-      "MYSQL_DATABASE"             = var.mysql_database
+      "MYSQL_DATABASE"             = var.mysql_database_name
     },
     var.additional_app_settings
   )
