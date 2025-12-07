@@ -16,10 +16,10 @@ resource "azurerm_linux_web_app_slot" "this" {
   app_settings = merge(
     {
       "WEBSITES_PORT"  = var.container_port
-      "MYSQL_HOST"     = var.mysql_host
-      "MYSQL_USERNAME" = var.mysql_username
-      "MYSQL_PASSWORD" = var.mysql_password
-      "MYSQL_DATABASE" = var.mysql_database
+      "DB_HOST"     = var.mysql_host
+      "DB_USER" = var.mysql_username
+      "DB_PASSWORD" = var.mysql_password
+      "DB_NAME" = var.mysql_database_name
     },
     var.additional_app_settings
   )
