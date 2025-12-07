@@ -52,7 +52,7 @@ variable "mysql_password" {
   description = "MySQL password"
 }
 
-variable "mysql_database" {
+variable "mysql_database_name" {
   type        = string
   description = "MySQL database name"
 }
