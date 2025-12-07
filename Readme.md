@@ -4,6 +4,7 @@ Pre-requisite
 1. Create App registration + Federated Credentials for OIDC connection[passwordless authentication] && assign Contributor/(least privileage) role to this identity at Subscription Layer.
 2. Bootstraping of Terraform: Create 1 Azure storage account and a container in it and pass this information in backend.tf [for terraform init]
 3. AzureMYSQL database flexible servers.
+4. Store AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID, DB_HOST, DB_NAME, DB_USER, DB_PASSWORD as Github Actions secrets.
    
 
 Security:
