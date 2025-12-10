@@ -6,7 +6,7 @@ rg_location  = "canadacentral"
 asp_sku   = "S1"
 
 # Web App / Container
-docker_image = "sohummnm/frontend"
+docker_image = "sohummnm/frontend-blue"
 docker_image_tag = "v1"      
 container_port = 80
 
