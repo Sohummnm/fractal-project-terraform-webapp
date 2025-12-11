@@ -7,7 +7,7 @@ module "rg" {
 
 module "app_service_plan" {
   source              = "../../modules/appserviceplan"
-  name                = "pe1-asp-dev"
+  name                = "fractal-asp"
   location            = module.rg.location
   resource_group_name = module.rg.name
   sku_name            = var.asp_sku  # adjust as needed
@@ -16,7 +16,7 @@ module "app_service_plan" {
 
 module "appservice" {
   source                = "../../modules/appservice"
-  name                  = "pe1-webapp-dev"
+  name                  = "fractal-asp-prod"
   location              = module.rg.location
   resource_group_name   = module.rg.name
   app_service_plan_id   = module.app_service_plan.id
