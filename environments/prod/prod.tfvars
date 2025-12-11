@@ -6,14 +6,14 @@ rg_location  = "canadacentral"
 asp_sku   = "S1"
 
 # Web App / Container
-docker_image = "sohummnm/frontend-blue"
+docker_image = "sohummnm/frontend"
 docker_image_tag = "v1"      
 container_port = 80
 
 # Deployment Slots
 slot_names = ["blue", "green"]
-docker_image_slot  = "sohummnm/frontend-green"
-docker_image_tag_slot = "v1"
+docker_image_slot  = "sohummnm/frontend"
+docker_image_tag_slot = "v2"
 docker_registry_username = "sohummnm"
 
 
