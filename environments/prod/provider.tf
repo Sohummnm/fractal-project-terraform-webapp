@@ -7,8 +7,8 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name   = "fractal-training-tfstate-acr"
-    storage_account_name  = "fractalterraform"
+    resource_group_name   = "db_terraform_rg"
+    storage_account_name  = "fractalappservice"
     container_name        = "prod"
     key                   = "prod.tfstate"
   }
